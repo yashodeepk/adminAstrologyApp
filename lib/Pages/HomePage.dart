@@ -49,6 +49,16 @@ class _HomePageState extends State<HomePage> {
                 String description = noteInfo['General Horoscope'];
                 String love = noteInfo['Love'];
                 String health = noteInfo['Health'];
+                Timestamp datetime = noteInfo['UpdatedAt'];
+                DateTime datetime2 = datetime.toDate();
+                DateTime datetime1 = DateTime.now();
+                final hr = datetime1.difference(datetime2).inHours;
+                final min = datetime1.difference(datetime2).inMinutes;
+                bool colorchange = false;
+                print(hr.toString() + ':' + min.toString());
+                if (hr > 24) {
+                  colorchange = true;
+                }
 
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -82,12 +92,18 @@ class _HomePageState extends State<HomePage> {
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            'Modified on - 00/00/2021',
+                            'Updated ' +
+                                hr.toString() +
+                                ' Hours ' +
+                                min.toString() +
+                                'Mins ago',
                             maxLines: 1,
                             style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w300,
-                                color: Colors.white.withOpacity(0.7)),
+                                color: colorchange
+                                    ? Colors.redAccent
+                                    : Colors.greenAccent),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ],

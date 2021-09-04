@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:admin/model/HoroschopeModel.dart';
 import 'package:flutter/services.dart';
 
 class EditPage extends StatefulWidget {
@@ -22,7 +23,6 @@ class _EditPageState extends State<EditPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     // loveController = EditPage.love;
     super.initState();
   }
@@ -172,7 +172,7 @@ class _EditPageState extends State<EditPage> {
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(3),
                           ],
-                          controller: loveController,
+                          controller: healthController,
                           obscureText: false,
                           decoration: InputDecoration(
                             hintText: EditPage.health! + ' %',
@@ -260,6 +260,36 @@ class _EditPageState extends State<EditPage> {
                           return null;
                         }
                       },
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 10, 20, 30),
+                  child: TextButton(
+                    onPressed: () {
+                      print(EditPage.discription);
+
+                      // if (scaffoldKey.currentState!.validate()) {
+                      Database.updateItem(
+                          health: healthController.text,
+                          love: loveController.text,
+                          description: EditPage.discription!,
+                          docName: EditPage.docName!);
+                      // }
+                    },
+                    child: Center(
+                      child: Text("Update"),
+                    ),
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(32.0))),
+                      fixedSize: Size(300, 45),
+                      primary: Colors.white,
+                      backgroundColor: Color(0xFFF57C00),
+                      textStyle: TextStyle(
+                        fontSize: 18,
+                      ),
                     ),
                   ),
                 ),

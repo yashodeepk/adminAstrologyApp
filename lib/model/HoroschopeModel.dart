@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
 class Database {
@@ -15,13 +16,14 @@ class Database {
       "General Horoscope": description,
       "Love": love,
       "Health": health,
-      "UpdatedAt": DateFormat.yMMMMd('en_US').add_jm().format(DateTime.now())
+      "UpdatedAt": DateTime.now()
     };
 
     await documentReferencer
         .update(data)
-        .whenComplete(() => print("Note item updated in the database"))
-        .catchError((e) => print(e));
+        .whenComplete(() => Fluttertoast.showToast(msg: 'Horoscope updated'))
+        .catchError(
+            (e) => Fluttertoast.showToast(msg: 'Oops!! Something Went Wrong.'));
   }
 
   static Stream<QuerySnapshot<Map<String, dynamic>>> readItems() {
