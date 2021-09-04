@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "749828102104",
+    "project_id": "astrology-app-d5d25",
+    "storage_bucket": "astrology-app-d5d25.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749828102104:android:624a46a166ee6cf37c04ad",
+        "android_client_info": {
+          "package_name": "com.astrology.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "749828102104-c05ce37gb9meu642q90mojdlrgonarmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNQ6uqqxzC0QQrt5lyXOYFq1SbLUX-I0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "749828102104-c05ce37gb9meu642q90mojdlrgonarmf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "749828102104-fko3nfua51ck1s7rl57rhropanbh274s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.yashodeepKacholiya.astrologyapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749828102104:android:ec25877574187e707c04ad",
+        "android_client_info": {
+          "package_name": "com.yashodeepKacholiya.astrologyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "749828102104-ckrc1h7hjnuen6iqqcp1mv3r437b6ni6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yashodeepKacholiya.astrologyapp",
+            "certificate_hash": "da7561b20f26adaa23112ff0f75e340ff9f217a1"
+          }
+        },
+        {
+          "client_id": "749828102104-pg7ab11i8bohongqvtuog3hehnkapmg1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yashodeepKacholiya.astrologyapp",
+            "certificate_hash": "2b4ee3bb7f28f5d32d4a7ff9d8cb49cf472cf997"
+          }
+        },
+        {
+          "client_id": "749828102104-c05ce37gb9meu642q90mojdlrgonarmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNQ6uqqxzC0QQrt5lyXOYFq1SbLUX-I0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "749828102104-c05ce37gb9meu642q90mojdlrgonarmf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "749828102104-fko3nfua51ck1s7rl57rhropanbh274s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.yashodeepKacholiya.astrologyapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
