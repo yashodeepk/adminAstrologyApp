@@ -6,7 +6,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 
 class GoogleSignInProvider extends ChangeNotifier {
-  bool isLoading = false;
   Future googleLogin() async {
     final googleSignIn = GoogleSignIn();
     final googleUser = await googleSignIn.signIn();
@@ -32,7 +31,6 @@ class GoogleSignInProvider extends ChangeNotifier {
             );
             await FirebaseAuth.instance.signInWithCredential(credential);
 
-            isLoading = true;
             final currentUser = FirebaseAuth.instance.currentUser;
 
             if (currentUser != null) {
@@ -60,7 +58,6 @@ class GoogleSignInProvider extends ChangeNotifier {
                 });
               }
               print('admin data updated');
-              isLoading = false;
               notifyListeners();
               Fluttertoast.showToast(msg: "Sign in success");
             } else {
@@ -68,7 +65,6 @@ class GoogleSignInProvider extends ChangeNotifier {
               await googleSignIn.disconnect();
               FirebaseAuth.instance.signOut();
               Fluttertoast.showToast(msg: "Sign in fail");
-              isLoading = false;
             }
             // Fluttertoast.showToast(msg: "Sign in success");
 

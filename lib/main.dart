@@ -38,7 +38,11 @@ class Home extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Color(0xFFF57C00),
+                    ),
+                  ),
                 );
               } else if (snapshot.hasData) {
                 return PageNavigator();
@@ -61,7 +65,7 @@ class PageNavigator extends StatefulWidget {
 class _PageNavigatorState extends State<PageNavigator> {
   int selectedPage = 0;
 
-  final _pageOptions = [HomePage(), VerifyUser(), PaymentCheck()];
+  final _pageOptions = [HomePage(), VerifyAstrologer(), PaymentCheck()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

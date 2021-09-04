@@ -26,6 +26,7 @@ dependencies:
   provider: ^5.0.0
   fluttertoast: ^8.0.8
   line_icons: ^2.0.0
+  auto_size_text_field: ^0.1.7
 
 dev_dependencies:
   flutter_test:

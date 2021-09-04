@@ -47,6 +47,8 @@ class _HomePageState extends State<HomePage> {
                 String docID = snapshot.data!.docs[index].id;
                 // String title = noteInfo['title'];
                 String description = noteInfo['General Horoscope'];
+                String love = noteInfo['Love'];
+                String health = noteInfo['Health'];
 
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -59,9 +61,14 @@ class _HomePageState extends State<HomePage> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),
-                      onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => EditPage()),
-                      ),
+                      onTap: () {
+                        EditPage.docName = docID;
+                        EditPage.discription = description;
+                        EditPage.love = love;
+                        EditPage.health = health;
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => EditPage()));
+                      },
                       title: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

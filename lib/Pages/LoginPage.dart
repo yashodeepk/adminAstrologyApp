@@ -15,7 +15,7 @@ class _LoginPageState extends State<LoginPage> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      color: Colors.grey.shade900,
+      color: Color(0xFF2C384A),
       child: Column(
         children: [
           Padding(
@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.all(Radius.circular(32.0))),
                     fixedSize: Size(300, 45),
                     primary: Colors.white,
-                    backgroundColor: Colors.blue[900],
+                    backgroundColor: Color(0xFFF57C00),
                     textStyle: TextStyle(
                       fontSize: 18,
                     ),
@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.all(Radius.circular(32.0))),
                     fixedSize: Size(300, 45),
                     primary: Colors.white,
-                    backgroundColor: Colors.blue[900],
+                    backgroundColor: Color(0xFFF57C00),
                     textStyle: TextStyle(
                       fontSize: 18,
                     ),
