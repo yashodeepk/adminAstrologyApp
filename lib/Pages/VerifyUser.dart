@@ -1,3 +1,4 @@
+import 'package:admin/VerificationPageUtils/VerifivationPage.dart';
 import 'package:admin/api/signinapi.dart';
 import 'package:admin/model/AstrologerVerification.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -54,6 +55,10 @@ class _VerifyAstrologerState extends State<VerifyAstrologer> {
                       String name = userinfo['name'];
                       String photoUrl = userinfo['photoUrl'];
                       String phoneNumber = userinfo['phonenumber'];
+                      int fees = userinfo['fees'];
+                      int rating = userinfo['rating'];
+                      String experience = userinfo['experience'];
+                      String expertise = userinfo['expertise'];
 
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -72,13 +77,20 @@ class _VerifyAstrologerState extends State<VerifyAstrologer> {
                               ),
                               radius: 20,
                             ),
-                            // onTap: () => Navigator.of(context).push(
-                            //   MaterialPageRoute(
-                            //       builder: (context) => EditPage(
-                            //             docName: docID,
-                            //             description: description,
-                            //           )),
-                            // ),
+                            onTap: () {
+                              AstrologerInfo.photoUrl = photoUrl;
+                              AstrologerInfo.email = docID;
+                              AstrologerInfo.name = name;
+                              AstrologerInfo.phoneNo = phoneNumber;
+                              AstrologerInfo.fees = fees;
+                              AstrologerInfo.experience = experience;
+                              AstrologerInfo.rating = rating;
+                              AstrologerInfo.expertise = expertise;
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => AstrologerInfo()),
+                              );
+                            },
                             title: Text(
                               name,
                               maxLines: 1,

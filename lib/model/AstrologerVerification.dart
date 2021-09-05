@@ -1,33 +1,58 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Astrologer {
-  static Future<void> updateItem({
-    required String health,
-    required String love,
-    required String description,
-    required String docName,
+  static Future<void> addItem({
+    required String name,
+    required String email,
+    required int fees,
+    required String experience,
+    required String expertise,
+    required String photoUrl,
+    required int rating,
+    required String phonenumber,
+    required BuildContext context,
   }) async {
     DocumentReference documentReferencer =
-        FirebaseFirestore.instance.collection('Astrologer').doc(docName);
+        FirebaseFirestore.instance.collection('Astrologer').doc(email);
 
     Map<String, dynamic> data = <String, dynamic>{
-      "General Horoscope": description,
-      "Love": love,
-      "Health": health,
-      "UpdatedAt": DateFormat.yMMMMd('en_US').add_jm().format(DateTime.now())
+      "name": name,
+      "email": email,
+      "fees": fees,
+      "experience": experience,
+      "expertise": expertise,
+      "photoUrl": photoUrl,
+      "rating": rating,
+      "phonenumber": phonenumber,
     };
 
-    await documentReferencer
-        .update(data)
-        .whenComplete(() => print("Note item updated in the database"))
-        .catchError((e) => print(e));
+    await documentReferencer.set(data).whenComplete(() {
+      Fluttertoast.showToast(msg: 'Astrologer Added');
+      deleteItem(docId: email, context: context);
+    }).catchError(
+        (e) => Fluttertoast.showToast(msg: 'Oops!! Something Went Wrong.'));
+  }
+
+  static Future<void> deleteItem({
+    required String docId,
+    required BuildContext context,
+  }) async {
+    DocumentReference documentReferencer =
+        FirebaseFirestore.instance.collection('temp_astrologer').doc(docId);
+
+    await documentReferencer.delete().whenComplete(() {
+      Fluttertoast.showToast(msg: 'Success');
+      Navigator.pop(context);
+    }).catchError(
+        (e) => Fluttertoast.showToast(msg: 'Oops!! Something Went Wrong.'));
   }
 
   static Stream<QuerySnapshot<Map<String, dynamic>>> readItems() {
-    CollectionReference<Map<String, dynamic>> notesItemCollection =
+    CollectionReference<Map<String, dynamic>> astrologerCollection =
         FirebaseFirestore.instance.collection('temp_astrologer');
 
-    return notesItemCollection.snapshots();
+    return astrologerCollection.snapshots();
   }
 }
