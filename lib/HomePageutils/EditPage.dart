@@ -16,10 +16,11 @@ class EditPage extends StatefulWidget {
 }
 
 class _EditPageState extends State<EditPage> {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-  TextEditingController loveController = TextEditingController();
-  TextEditingController healthController = TextEditingController();
-  TextEditingController horoscopeController = TextEditingController();
+  // final scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  // TextEditingController loveController = TextEditingController();
+  // TextEditingController healthController = TextEditingController();
+  // TextEditingController horoscopeController = TextEditingController();
 
   @override
   void initState() {
@@ -36,8 +37,8 @@ class _EditPageState extends State<EditPage> {
         centerTitle: true,
         backgroundColor: Color(0xFFF57C00),
       ),
-      key: scaffoldKey,
       body: Form(
+        key: _formKey,
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -64,7 +65,7 @@ class _EditPageState extends State<EditPage> {
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: Center(
                           child: Text(
-                            'Love',
+                            'Love %',
                             textAlign: TextAlign.start,
                             style: TextStyle(
                                 color: Colors.redAccent,
@@ -87,18 +88,24 @@ class _EditPageState extends State<EditPage> {
                             }
                             return null;
                           },
+                          initialValue: EditPage.love,
+                          enabled: true,
+                          onChanged: (_val) {
+                            EditPage.love = _val;
+                          },
                           keyboardType: TextInputType.number,
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(3),
                           ],
-                          controller: loveController,
-                          obscureText: false,
+                          // controller: loveController,
+
+                          // obscureText: false,
                           decoration: InputDecoration(
-                            hintText: EditPage.love! + ' %',
-                            hintStyle: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                            ),
+                            // hintText: EditPage.love! + ' %',
+                            // hintStyle: TextStyle(
+                            //   color: Colors.white,
+                            //   fontSize: 18,
+                            // ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: Colors.transparent,
@@ -145,7 +152,7 @@ class _EditPageState extends State<EditPage> {
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: Center(
                           child: Text(
-                            'Health',
+                            'Health %',
                             textAlign: TextAlign.start,
                             style: TextStyle(
                                 color: Colors.greenAccent,
@@ -168,18 +175,21 @@ class _EditPageState extends State<EditPage> {
                             }
                             return null;
                           },
+                          initialValue: EditPage.health,
+                          enabled: true,
+                          onChanged: (_val) {
+                            EditPage.health = _val;
+                          },
                           keyboardType: TextInputType.number,
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(3),
                           ],
-                          controller: healthController,
-                          obscureText: false,
                           decoration: InputDecoration(
-                            hintText: EditPage.health! + ' %',
-                            hintStyle: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                            ),
+                            // hintText: EditPage.health! + ' %',
+                            // hintStyle: TextStyle(
+                            //   color: Colors.white,
+                            //   fontSize: 18,
+                            // ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: Colors.transparent,
@@ -240,7 +250,7 @@ class _EditPageState extends State<EditPage> {
                     ),
                     child: TextFormField(
                       decoration: InputDecoration.collapsed(
-                          hintText: "Note Description",
+                          hintText: "Description",
                           fillColor: Colors.grey.shade700),
                       style: TextStyle(
                         fontSize: 16,
@@ -269,13 +279,13 @@ class _EditPageState extends State<EditPage> {
                     onPressed: () {
                       print(EditPage.discription);
 
-                      // if (scaffoldKey.currentState!.validate()) {
-                      Database.updateItem(
-                          health: healthController.text,
-                          love: loveController.text,
-                          description: EditPage.discription!,
-                          docName: EditPage.docName!);
-                      // }
+                      if (_formKey.currentState!.validate()) {
+                        Database.updateItem(
+                            health: EditPage.health!,
+                            love: EditPage.love!,
+                            description: EditPage.discription!,
+                            docName: EditPage.docName!);
+                      }
                     },
                     child: Center(
                       child: Text("Update"),

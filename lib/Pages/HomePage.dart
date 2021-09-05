@@ -53,9 +53,9 @@ class _HomePageState extends State<HomePage> {
                 DateTime datetime2 = datetime.toDate();
                 DateTime datetime1 = DateTime.now();
                 final hr = datetime1.difference(datetime2).inHours;
-                final min = datetime1.difference(datetime2).inMinutes;
+                // final min = datetime1.difference(datetime2).inMinutes;
                 bool colorchange = false;
-                print(hr.toString() + ':' + min.toString());
+                // print(hr.toString());
                 if (hr > 24) {
                   colorchange = true;
                 }
@@ -92,11 +92,7 @@ class _HomePageState extends State<HomePage> {
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
-                            'Updated ' +
-                                hr.toString() +
-                                ' Hours ' +
-                                min.toString() +
-                                'Mins ago',
+                            'Updated ' + hr.toString() + ' Hours ago',
                             maxLines: 1,
                             style: TextStyle(
                                 fontSize: 12,

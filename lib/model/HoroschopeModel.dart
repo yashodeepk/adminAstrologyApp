@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:intl/intl.dart';
 
 class Database {
   static Future<void> updateItem({
@@ -21,7 +20,7 @@ class Database {
 
     await documentReferencer
         .update(data)
-        .whenComplete(() => Fluttertoast.showToast(msg: 'Horoscope updated'))
+        .whenComplete(() => Fluttertoast.showToast(msg: '$docName updated'))
         .catchError(
             (e) => Fluttertoast.showToast(msg: 'Oops!! Something Went Wrong.'));
   }
