@@ -1,13 +1,14 @@
-import 'package:admin/HomePageutils/EditPage.dart';
-import 'package:admin/api/signinapi.dart';
+import 'package:admin/AllPageutils/EditPage.dart';
+import 'package:admin/AllPageutils/MenuItemModel.dart';
 import 'package:admin/model/HoroschopeModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  static bool? isSuperuser;
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -21,16 +22,14 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Horoscope'),
         centerTitle: true,
-        leading: IconButton(
-          icon: Icon(
-            Icons.logout_rounded,
-          ),
-          onPressed: () {
-            final provider =
-                Provider.of<GoogleSignInProvider>(context, listen: false);
-            provider.logout();
-          },
-        ),
+        actions: [
+          PopupMenuButton<MenuIteam>(
+              color: Color(0xFF2C384A),
+              onSelected: (item) => onSelect(context, item),
+              itemBuilder: (context) => [
+                    ...MenuIteams.iteamsSuperAdmin.map(buildIteam).toList(),
+                  ]),
+        ],
         backgroundColor: Color(0xFFF57C00),
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(

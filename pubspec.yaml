@@ -36,8 +36,8 @@ flutter:
 
   uses-material-design: true
 
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/noimage.jpg
   #   - images/a_dot_ham.jpeg
 
   # example:
