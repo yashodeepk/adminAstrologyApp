@@ -1,3 +1,4 @@
+import 'package:admin/Pages/HomePage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -47,16 +48,18 @@ class GoogleSignInProvider extends ChangeNotifier {
                 FirebaseFirestore.instance
                     .collection('Admin')
                     .doc(currentUser.email)
-                    .set({
+                    .update({
                   'name': currentUser.displayName,
                   'email': currentUser.email,
                   'photoUrl': currentUser.photoURL,
                   'id': currentUser.uid,
-                  'createdAt':
+                  'LoginAt':
                       DateFormat('yyyy-MM-dd – kk:mm').format(DateTime.now()),
                   // 'superadmin': false
                 });
               }
+              HomePage.isSuperuser = onValue.data()!['superAdmin'];
+              print(HomePage.isSuperuser);
               print('admin data updated');
               notifyListeners();
               Fluttertoast.showToast(msg: "Sign in success");

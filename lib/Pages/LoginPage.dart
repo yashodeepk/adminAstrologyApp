@@ -39,26 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                     provider.googleLogin();
                   },
                   child: Center(
-                    child: Text("Login as Admin"),
-                  ),
-                  style: TextButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(32.0))),
-                    fixedSize: Size(300, 45),
-                    primary: Colors.white,
-                    backgroundColor: Color(0xFFF57C00),
-                    textStyle: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Center(
-                    child: Text("Login as SuperAdmin"),
+                    child: Text("Login"),
                   ),
                   style: TextButton.styleFrom(
                     shape: RoundedRectangleBorder(

@@ -22,7 +22,7 @@ class Database {
         .update(data)
         .whenComplete(() => Fluttertoast.showToast(msg: '$docName updated'))
         .catchError(
-            (e) => Fluttertoast.showToast(msg: 'Oops!! Something Went Wrong.'));
+            (e) => Fluttertoast.showToast(msg: 'Oops!! Something Went Wrong!'));
   }
 
   static Stream<QuerySnapshot<Map<String, dynamic>>> readItems() {

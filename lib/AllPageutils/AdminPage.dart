@@ -1,37 +1,49 @@
-import 'package:admin/AllPageutils/MenuItemModel.dart';
-import 'package:admin/VerificationPageUtils/VerifivationPage.dart';
-import 'package:admin/model/AstrologerVerification.dart';
+import 'package:admin/AllPageutils/AdminInfoPage.dart';
+import 'package:admin/AllPageutils/CreateAdmin.dart';
+import 'package:admin/model/AdminsModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class VerifyAstrologer extends StatefulWidget {
-  const VerifyAstrologer({Key? key}) : super(key: key);
+class AdminPage extends StatefulWidget {
+  const AdminPage({Key? key}) : super(key: key);
 
   @override
-  _VerifyAstrologerState createState() => _VerifyAstrologerState();
+  _AdminPageState createState() => _AdminPageState();
 }
 
-class _VerifyAstrologerState extends State<VerifyAstrologer> {
+class _AdminPageState extends State<AdminPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF2C384A),
       appBar: AppBar(
-        title: Text('Verify Astrologer'),
+        title: Text('All Admins'),
         centerTitle: true,
-        actions: [
-          PopupMenuButton<MenuIteam>(
-              color: Color(0xFF2C384A),
-              onSelected: (item) => onSelect(context, item),
-              itemBuilder: (context) => [
-                    ...MenuIteams.iteamsSuperAdmin.map(buildIteam).toList(),
-                  ]),
-        ],
+        leading: BackButton(),
         backgroundColor: Color(0xFFF57C00),
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Color(0xFFF57C00),
+        label: Row(
+          children: [
+            Icon(Icons.add),
+            Text("Create New Admin"),
+          ],
+        ),
+        onPressed: () {
+          showModalBottomSheet(
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              // barrierColor: Colors.black,
+              context: context,
+              builder: (context) => SingleChildScrollView(
+                    child: CreateAdmin(),
+                  ));
+        },
+      ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-        stream: Astrologer.readItems(),
+        stream: AdminsInfo.readItems(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Text('Something went wrong');
@@ -51,11 +63,6 @@ class _VerifyAstrologerState extends State<VerifyAstrologer> {
                       String docID = snapshot.data!.docs[index].id;
                       String name = userinfo['name'];
                       String photoUrl = userinfo['photoUrl'];
-                      String phoneNumber = userinfo['phonenumber'];
-                      int fees = userinfo['fees'];
-                      int rating = userinfo['rating'];
-                      String experience = userinfo['experience'];
-                      String expertise = userinfo['expertise'];
 
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -75,18 +82,14 @@ class _VerifyAstrologerState extends State<VerifyAstrologer> {
                               radius: 20,
                             ),
                             onTap: () {
-                              AstrologerInfo.photoUrl = photoUrl;
-                              AstrologerInfo.email = docID;
-                              AstrologerInfo.name = name;
-                              AstrologerInfo.phoneNo = phoneNumber;
-                              AstrologerInfo.fees = fees;
-                              AstrologerInfo.experience = experience;
-                              AstrologerInfo.rating = rating;
-                              AstrologerInfo.expertise = expertise;
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (context) => AstrologerInfo()),
-                              );
+                              showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  // barrierColor: Colors.black,
+                                  context: context,
+                                  builder: (context) => SingleChildScrollView(
+                                        child: AdminInfoPage(),
+                                      ));
                             },
                             title: Text(
                               name,
@@ -108,13 +111,13 @@ class _VerifyAstrologerState extends State<VerifyAstrologer> {
                                       color: Colors.white.withOpacity(0.7)),
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                Text(
-                                  'phoneNumber - ' + phoneNumber,
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      color: Colors.white.withOpacity(0.7)),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
+                                // Text(
+                                //   'phoneNumber - ' + phoneNumber,
+                                //   maxLines: 1,
+                                //   style: TextStyle(
+                                //       color: Colors.white.withOpacity(0.7)),
+                                //   overflow: TextOverflow.ellipsis,
+                                // ),
                               ],
                             ),
                           ),
