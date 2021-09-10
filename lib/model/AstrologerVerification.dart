@@ -9,7 +9,6 @@ class Astrologer {
     required int fees,
     required String experience,
     required String expertise,
-    required String photoUrl,
     required int rating,
     required String phonenumber,
     required BuildContext context,
@@ -23,7 +22,7 @@ class Astrologer {
       "fees": fees,
       "experience": experience,
       "expertise": expertise,
-      "photoUrl": photoUrl,
+      "photoUrl": "",
       "rating": rating,
       "phonenumber": phonenumber,
     };

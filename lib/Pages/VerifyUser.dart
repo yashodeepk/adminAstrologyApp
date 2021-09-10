@@ -50,7 +50,6 @@ class _VerifyAstrologerState extends State<VerifyAstrologer> {
                       var userinfo = snapshot.data!.docs[index].data();
                       String docID = snapshot.data!.docs[index].id;
                       String name = userinfo['name'];
-                      String photoUrl = userinfo['photoUrl'];
                       String phoneNumber = userinfo['phonenumber'];
                       int fees = userinfo['fees'];
                       int rating = userinfo['rating'];
@@ -68,14 +67,7 @@ class _VerifyAstrologerState extends State<VerifyAstrologer> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
                             ),
-                            leading: CircleAvatar(
-                              child: ClipOval(
-                                child: Image.network(photoUrl),
-                              ),
-                              radius: 20,
-                            ),
                             onTap: () {
-                              AstrologerInfo.photoUrl = photoUrl;
                               AstrologerInfo.email = docID;
                               AstrologerInfo.name = name;
                               AstrologerInfo.phoneNo = phoneNumber;
