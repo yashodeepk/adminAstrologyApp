@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 class AstrologerInfo extends StatefulWidget {
   const AstrologerInfo({Key? key}) : super(key: key);
   static String? name;
-  static String? photoUrl;
   static String? phoneNo;
   static String? email;
   static String? experience;
@@ -34,19 +33,13 @@ class _AstrologerInfoState extends State<AstrologerInfo> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: CircleAvatar(
-                  child: ClipOval(
-                    child: Image.network(AstrologerInfo.photoUrl!),
+                padding: const EdgeInsets.all(18),
+                child: Text(
+                  AstrologerInfo.name!,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
                   ),
-                  radius: 50,
-                ),
-              ),
-              Text(
-                AstrologerInfo.name!,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
                 ),
               ),
               Padding(
@@ -105,6 +98,7 @@ class _AstrologerInfoState extends State<AstrologerInfo> {
                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 18),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 15.0),
@@ -116,7 +110,7 @@ class _AstrologerInfoState extends State<AstrologerInfo> {
                         ),
                       ),
                     ),
-                    Container(
+                    Expanded(
                       child: Text(
                         AstrologerInfo.expertise!,
                         maxLines: 2,
@@ -216,7 +210,6 @@ class _AstrologerInfoState extends State<AstrologerInfo> {
                           fees: AstrologerInfo.fees!,
                           experience: AstrologerInfo.experience!,
                           expertise: AstrologerInfo.expertise!,
-                          photoUrl: AstrologerInfo.photoUrl!,
                           rating: AstrologerInfo.rating!,
                           phonenumber: AstrologerInfo.phoneNo!,
                           context: context);

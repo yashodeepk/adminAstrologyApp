@@ -16,19 +16,20 @@ class AdminsInfo {
     Map<String, dynamic> data = <String, dynamic>{
       "name": name,
       "email": email,
-      "isSuperAdmin": isSuperAdmin,
+      "photoUrl": 'no_image',
+      "id": '',
+      "superAdmin": isSuperAdmin,
       "createdAt": createdAt,
     };
 
     await documentReferencer.set(data).whenComplete(() {
-      Fluttertoast.showToast(msg: 'Astrologer Added');
-      delete(docId: email, context: context);
+      Fluttertoast.showToast(msg: 'Admin Added');
+      // delete(docId: email, context: context);
     }).catchError(
         (e) => Fluttertoast.showToast(msg: 'Oops!! Something Went Wrong.'));
   }
 
   static Future<void> update({
-    required String name,
     required String email,
     required bool isSuperAdmin,
     required BuildContext context,
@@ -37,14 +38,12 @@ class AdminsInfo {
         FirebaseFirestore.instance.collection('Admin').doc(email);
 
     Map<String, dynamic> data = <String, dynamic>{
-      "name": name,
       "email": email,
-      "isSuperAdmin": isSuperAdmin,
+      "superAdmin": isSuperAdmin,
     };
 
     await documentReferencer.update(data).whenComplete(() {
-      Fluttertoast.showToast(msg: 'Astrologer Added');
-      delete(docId: email, context: context);
+      Fluttertoast.showToast(msg: 'Admin updated');
     }).catchError(
         (e) => Fluttertoast.showToast(msg: 'Oops!! Something Went Wrong.'));
   }

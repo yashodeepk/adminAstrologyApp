@@ -1,9 +1,11 @@
 import 'package:admin/AllPageutils/AdminInfoPage.dart';
 import 'package:admin/AllPageutils/CreateAdmin.dart';
+import 'package:admin/Pages/HomePage.dart';
 import 'package:admin/model/AdminsModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AdminPage extends StatefulWidget {
   const AdminPage({Key? key}) : super(key: key);
@@ -32,14 +34,18 @@ class _AdminPageState extends State<AdminPage> {
           ],
         ),
         onPressed: () {
-          showModalBottomSheet(
-              isScrollControlled: true,
-              backgroundColor: Colors.transparent,
-              // barrierColor: Colors.black,
-              context: context,
-              builder: (context) => SingleChildScrollView(
-                    child: CreateAdmin(),
-                  ));
+          if (HomePage.isSuperuser == true) {
+            showModalBottomSheet(
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                // barrierColor: Colors.black,
+                context: context,
+                builder: (context) => SingleChildScrollView(
+                      child: CreateAdmin(),
+                    ));
+          } else {
+            Fluttertoast.showToast(msg: 'You are not SuperAdmin');
+          }
         },
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
@@ -63,7 +69,13 @@ class _AdminPageState extends State<AdminPage> {
                       String docID = snapshot.data!.docs[index].id;
                       String name = userinfo['name'];
                       String photoUrl = userinfo['photoUrl'];
-
+                      print('ok ' + photoUrl);
+                      if (userinfo['photoUrl'] == 'no_image') {
+                        photoUrl =
+                            'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png';
+                      } else {
+                        photoUrl = userinfo['photoUrl'];
+                      }
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Ink(
@@ -77,19 +89,31 @@ class _AdminPageState extends State<AdminPage> {
                             ),
                             leading: CircleAvatar(
                               child: ClipOval(
-                                child: Image.network(photoUrl),
+                                child: FadeInImage.assetNetwork(
+                                  image: photoUrl,
+                                  placeholder: 'assets/noimage.jpg',
+                                  // imageErrorBuilder: ,
+                                ),
                               ),
                               radius: 20,
                             ),
                             onTap: () {
-                              showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  backgroundColor: Colors.transparent,
-                                  // barrierColor: Colors.black,
-                                  context: context,
-                                  builder: (context) => SingleChildScrollView(
-                                        child: AdminInfoPage(),
-                                      ));
+                              if (HomePage.isSuperuser == true) {
+                                AdminInfoPage.name = name;
+                                AdminInfoPage.photourl = photoUrl;
+                                AdminInfoPage.email = docID;
+                                showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    // barrierColor: Colors.black,
+                                    context: context,
+                                    builder: (context) => SingleChildScrollView(
+                                          child: AdminInfoPage(),
+                                        ));
+                              } else {
+                                Fluttertoast.showToast(
+                                    msg: 'You are not SuperAdmin');
+                              }
                             },
                             title: Text(
                               name,
