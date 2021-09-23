@@ -1,4 +1,3 @@
-import 'package:admin/Pages/HomePage.dart';
 import 'package:admin/model/AdminsModel.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -8,6 +7,7 @@ class AdminInfoPage extends StatefulWidget {
   static String? name;
   static String? photourl;
   static String? email;
+  static bool? isSuperAdmin;
 
   @override
   _AdminInfoPageState createState() => _AdminInfoPageState();
@@ -17,7 +17,7 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
   String? dropdownvalue;
   bool? superAdmin;
   void superadminCheck() {
-    if (HomePage.isSuperuser == true) {
+    if (AdminInfoPage.isSuperAdmin == true) {
       dropdownvalue = 'SuperAdmin';
       superAdmin = true;
     } else {
@@ -143,7 +143,7 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
               ),
               TextButton(
                 onPressed: () {
-                  if (superAdmin != HomePage.isSuperuser) {
+                  if (superAdmin != AdminInfoPage.isSuperAdmin) {
                     AdminsInfo.update(
                         email: AdminInfoPage.email!,
                         isSuperAdmin: superAdmin!,

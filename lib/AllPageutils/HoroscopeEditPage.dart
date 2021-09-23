@@ -16,11 +16,7 @@ class EditPage extends StatefulWidget {
 }
 
 class _EditPageState extends State<EditPage> {
-  // final scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  // TextEditingController loveController = TextEditingController();
-  // TextEditingController healthController = TextEditingController();
-  // TextEditingController horoscopeController = TextEditingController();
 
   @override
   void initState() {
