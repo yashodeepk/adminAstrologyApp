@@ -71,6 +71,18 @@ class _PaymentCheckState extends State<PaymentCheck> {
                               color: Colors.white),
                           overflow: TextOverflow.ellipsis,
                         ),
+                        subtitle: Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Text(
+                            'Tap to checkout payments details',
+                            maxLines: 1,
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.grey),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
                       ),
                     ));
               },
