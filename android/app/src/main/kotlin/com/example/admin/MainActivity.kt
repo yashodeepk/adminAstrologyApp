@@ -1,4 +1,4 @@
-package com.astrology.admin
+package com.admin.astrology
 
 import io.flutter.embedding.android.FlutterActivity
 

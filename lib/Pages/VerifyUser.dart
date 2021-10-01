@@ -52,7 +52,7 @@ class _VerifyAstrologerState extends State<VerifyAstrologer> {
                       String name = userinfo['name'];
                       String phoneNumber = userinfo['phonenumber'];
                       int fees = userinfo['fees'];
-                      int rating = userinfo['rating'];
+                      // int rating = userinfo['rating'];
                       String experience = userinfo['experience'];
                       String expertise = userinfo['expertise'];
 
@@ -73,7 +73,7 @@ class _VerifyAstrologerState extends State<VerifyAstrologer> {
                               AstrologerInfo.phoneNo = phoneNumber;
                               AstrologerInfo.fees = fees;
                               AstrologerInfo.experience = experience;
-                              AstrologerInfo.rating = rating;
+                              AstrologerInfo.rating = 5;
                               AstrologerInfo.expertise = expertise;
                               Navigator.of(context).push(
                                 MaterialPageRoute(
