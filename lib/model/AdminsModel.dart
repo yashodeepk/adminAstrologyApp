@@ -23,6 +23,7 @@ class AdminsInfo {
     };
 
     await documentReferencer.set(data).whenComplete(() {
+      Navigator.pop(context);
       Fluttertoast.showToast(msg: 'Admin Added');
       // delete(docId: email, context: context);
     }).catchError(
@@ -43,6 +44,7 @@ class AdminsInfo {
     };
 
     await documentReferencer.update(data).whenComplete(() {
+      Navigator.pop(context);
       Fluttertoast.showToast(msg: 'Admin updated');
     }).catchError(
         (e) => Fluttertoast.showToast(msg: 'Oops!! Something Went Wrong.'));
