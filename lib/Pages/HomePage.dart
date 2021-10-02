@@ -38,6 +38,7 @@ class _HomePageState extends State<HomePage> {
           if (snapshot.hasError) {
             return Text('Something went wrong');
           } else if (snapshot.hasData || snapshot.data != null) {
+            print(snapshot.data);
             return ListView.separated(
               separatorBuilder: (context, index) => SizedBox(height: 10.0),
               itemCount: snapshot.data!.docs.length,

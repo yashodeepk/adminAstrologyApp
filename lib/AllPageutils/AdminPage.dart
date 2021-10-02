@@ -69,6 +69,7 @@ class _AdminPageState extends State<AdminPage> {
                       String docID = snapshot.data!.docs[index].id;
                       String name = userinfo['name'];
                       String photoUrl = userinfo['photoUrl'];
+                      bool superAdmin = userinfo['superAdmin'];
                       print('ok ' + photoUrl);
                       if (userinfo['photoUrl'] == 'no_image') {
                         photoUrl =
@@ -102,6 +103,7 @@ class _AdminPageState extends State<AdminPage> {
                                 AdminInfoPage.name = name;
                                 AdminInfoPage.photourl = photoUrl;
                                 AdminInfoPage.email = docID;
+                                AdminInfoPage.isSuperAdmin = superAdmin;
                                 showModalBottomSheet(
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
