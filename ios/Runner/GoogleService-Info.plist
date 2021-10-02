@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>749828102104-lppqck8um4jthm9vmqhal1035e19gvi8.apps.googleusercontent.com</string>
+	<string>121239416780-70kc6jdjejj1ht712t8ohrl6f5ahbom2.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.749828102104-lppqck8um4jthm9vmqhal1035e19gvi8</string>
+	<string>com.googleusercontent.apps.121239416780-70kc6jdjejj1ht712t8ohrl6f5ahbom2</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>749828102104-495879k4k1m75no9mh3pnl8cvockfugo.apps.googleusercontent.com</string>
+	<string>121239416780-6250h97s6kei9ui68f0gtj5o7abtncag.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyC_pNcLSCV0ZcbzThC-GPIvIA3FYBLw5Bs</string>
+	<string>AIzaSyDKfGMBwCkwOUyBDVxJp8Xf5H6I34e-B_I</string>
 	<key>GCM_SENDER_ID</key>
-	<string>749828102104</string>
+	<string>121239416780</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.astro.admin</string>
+	<string>com.admin.astrology</string>
 	<key>PROJECT_ID</key>
-	<string>astrology-app-d5d25</string>
+	<string>atrology-c4a85</string>
 	<key>STORAGE_BUCKET</key>
-	<string>astrology-app-d5d25.appspot.com</string>
+	<string>atrology-c4a85.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:749828102104:ios:5541a0039a9ee62a7c04ad</string>
+	<string>1:121239416780:ios:ff45aa63808676b04df769</string>
 </dict>
 </plist>
