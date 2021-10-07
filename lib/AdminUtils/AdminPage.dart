@@ -1,5 +1,5 @@
-import 'package:admin/AllPageutils/AdminInfoPage.dart';
-import 'package:admin/AllPageutils/CreateAdmin.dart';
+import 'package:admin/AdminUtils/AdminInfoPage.dart';
+import 'package:admin/AdminUtils/CreateAdmin.dart';
 import 'package:admin/Pages/HomePage.dart';
 import 'package:admin/model/AdminsModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -93,7 +93,11 @@ class _AdminPageState extends State<AdminPage> {
                                 child: FadeInImage.assetNetwork(
                                   image: photoUrl,
                                   placeholder: 'assets/noimage.jpg',
-                                  // imageErrorBuilder: ,
+                                  imageErrorBuilder:
+                                      (context, error, stackTrace) {
+                                    return Image.asset('assets/noimage.jpg',
+                                        fit: BoxFit.fitWidth);
+                                  },
                                 ),
                               ),
                               radius: 20,

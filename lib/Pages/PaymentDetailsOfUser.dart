@@ -1,4 +1,4 @@
-import 'package:admin/AllPageutils/MenuItemModel.dart';
+import 'package:admin/model/MenuItemModel.dart';
 import 'package:admin/model/PaymentModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +47,7 @@ class _PaymentDetailsPageState extends State<PaymentDetailsPage> {
                 // String docID = snapshot.data!.docs[index].id;
                 String paymentId = noteInfo['paymentId'];
                 String description = noteInfo['description'];
-                int amount = noteInfo['amount'];
+                double amount = noteInfo['amount'];
                 String paidTo = noteInfo['paidTo'];
                 String from = noteInfo['from'];
                 String date = noteInfo['paymentDateTime'];

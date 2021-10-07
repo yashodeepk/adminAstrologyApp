@@ -1,5 +1,5 @@
-import 'package:admin/AllPageutils/HoroscopeEditPage.dart';
-import 'package:admin/AllPageutils/MenuItemModel.dart';
+import 'package:admin/HoroscopePageUtils/HoroscopeEditPage.dart';
+import 'package:admin/model/MenuItemModel.dart';
 import 'package:admin/model/HoroschopeModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';

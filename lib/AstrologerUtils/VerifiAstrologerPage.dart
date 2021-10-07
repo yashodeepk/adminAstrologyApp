@@ -488,7 +488,7 @@ class _AstrologerInfoState extends State<AstrologerInfo> {
                       children: [
                         TextButton(
                           onPressed: () {
-                            Astrologer.deleteItem(
+                            TempAstrologer.deleteItem(
                                 docId: AstrologerInfo.email!, context: context);
                           },
                           child: Center(
@@ -509,7 +509,7 @@ class _AstrologerInfoState extends State<AstrologerInfo> {
                         TextButton(
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
-                              Astrologer.addItem(
+                              TempAstrologer.addItem(
                                   name: AstrologerInfo.name!,
                                   email: AstrologerInfo.email!,
                                   fees: AstrologerInfo.fees!,

@@ -1,4 +1,4 @@
-import 'package:admin/AllPageutils/AdminPage.dart';
+import 'package:admin/AdminUtils/AdminPage.dart';
 import 'package:admin/api/signinapi.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

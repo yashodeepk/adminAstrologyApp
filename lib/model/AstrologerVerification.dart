@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class Astrologer {
+class TempAstrologer {
   static Future<void> addItem({
     required String name,
     required String email,
